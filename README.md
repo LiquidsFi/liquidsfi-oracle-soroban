@@ -1,25 +1,52 @@
-# LiquidsFi Oracle Contract <!-- omit in toc -->
+### LiquidsFi Oracle Contract <!-- omit in toc -->
 
-This repository contains example smart contracts for key Soroban features and concepts. The examples illustrate how to use the features, in their simplest form.
+This repository contains LiquidsFi's Soroban oracle contract (MVP), including key features and the oracle node receptacle contract.
 
-This repository contains LiquidsFi's soroban oracle contract (MVP) with key features and oracle node receptacle contract.
+> **⚠ WARNING**
+>
+> These implementations are in beta, still undergoing development and testing, and have not yet been audited.
 
-> [!WARNING]  
-> These implementations is a beta version, and it is still undergoing development, testing and it is yet to be audited.
+## Overview
 
-The repository contains a main oracle contracts and a receptacle subcontract:
+This repository includes two key smart contracts:
+
+- **Oracle Main Contract:** Handles on-chain consensus and upkeep logic for received data.
+- **Receptacle Contract:** Acts as an entry point for each connected oracle node, collecting and queuing data before forwarding it to the main oracle contract.
 
 ## The Oracle Main Contract
 
-This is the main contract in the repository, it contains onchain concensus mechanism and upkeep logic for data received.
+The **Oracle Main Contract** is the core component, responsible for:
+
+- **Consensus Mechanism:** Ensuring data integrity through decentralized validation.
+- **Upkeep Logic:** Processing and maintaining accurate on-chain data.
+- **Aggregation of Inputs:** Receiving validated inputs from multiple oracle nodes.
 
 ## The Receptacle Contract
 
-The receptacle contract is the entry-point for each node connected to the oracle. It is where data received onchain are dumped. This ensures scalability since if multiple nodes are sending data to the oracle, it will cause latency, so each node has its own receptacle contract where data are collected and queued.
+The **Receptacle Contract** serves as an intermediary for oracle nodes. Each node submits data to its own receptacle, reducing congestion and improving scalability. This approach prevents latency issues caused by multiple nodes interacting directly with the oracle.
 
-The receptacle contract can be found at: [Receptacle](https://github.com/LiquidsFi/liquidsfi-oracle-soroban/tree/main/liquidsfi-oracle-receptacle)
+🔗 **Receptacle Contract Repository:** [GitHub](https://github.com/LiquidsFi/liquidsfi-oracle-soroban/tree/main/liquidsfi-oracle-receptacle)
 
-## Mainnet Deployment:
+## LiquidsFi Bridge Contract
 
-- Oracle Contract Deployment: [CADFS4N6Q2JZSNYQ2QKNEFZGFD6NAD3ZXDNEXX7GTVT2KF7UWXNQWBOZ](https://developers.stellar.org/docs/build)
-- Bridge Contract Deployment: [CB32ILGARL45X7IW6ROE24VPHSVRHDDQQ7GC2L67LYGB4AGZ2LU3565Z](https://stellar.expert/explorer/public/contract/CADFS4N6Q2JZSNYQ2QKNEFZGFD6NAD3ZXDNEXX7GTVT2KF7UWXNQWBOZ)
+The **LiquidsFi Bridge Contract** enables cross-chain asset transfers by allowing users to deposit stablecoin liquidity into a pool and send tokens to another blockchain.
+
+### Key Features:
+
+- **Liquidity Pooling:** Deposited tokens are locked in the pool.
+- **Cross-Chain Transfer:** Transaction data is sent to the destination chain, where the oracle verifies it before releasing the funds.
+
+🔗 **Bridge Contract Repository:** [GitHub](https://github.com/LiquidsFi/liquidsfi-bridge-soroban)
+
+## Mainnet Deployment
+
+- **Oracle Contract Deployment:** [CADFS4N6Q2JZSNYQ2QKNEFZGFD6NAD3ZXDNEXX7GTVT2KF7UWXNQWBOZ](https://developers.stellar.org/docs/build)
+- **Bridge Contract Deployment:** [CB32ILGARL45X7IW6ROE24VPHSVRHDDQQ7GC2L67LYGB4AGZ2LU3565Z](https://stellar.expert/explorer/public/contract/CADFS4N6Q2JZSNYQ2QKNEFZGFD6NAD3ZXDNEXX7GTVT2KF7UWXNQWBOZ)
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for details.
+
+---
+
+For more details, visit the [LiquidsFi GitHub](https://github.com/LiquidsFi).
