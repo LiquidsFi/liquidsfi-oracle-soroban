@@ -1,6 +1,3 @@
-# Smart wallet sub-accounts Soroban
+# LiquidsFi Node Receptacle Contract <!-- omit in toc -->
 
-## Project Structure
-
-
-- This contract allows users to create smart wallet account using an external wallet or a social media account
+- The following contract is the LiquidFi's node receptacle contract
